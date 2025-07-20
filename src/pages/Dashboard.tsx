@@ -125,7 +125,7 @@ const Dashboard = () => {
                     <div className="text-center mb-8">
                         <div
                             className="w-24 h-24 bg-pink-300 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white">
-                            <img src="/lovable-uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"
+                            <img src="/uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"
                                  className="w-20 h-20 rounded-full object-cover"/>
                         </div>
                         <h2 className="text-xl font-bold text-gray-800">Hello {userName}! 👋</h2>
@@ -150,7 +150,7 @@ const Dashboard = () => {
                     <div className="mt-10">
                         <div
                             className="w-20 h-20 bg-blue-300 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white">
-                            <img src="/lovable-Uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"
+                            <img src="/Uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"
                                  className="w-20 h-20 rounded-full object-cover border-white"/>
                             <User className="w-12 h-12 text-blue-600"/>
                         </div>
@@ -211,7 +211,7 @@ const Dashboard = () => {
                             {/*    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>*/}
                             {/*</div>*/}
                             {/*<div className="w-10 h-10 bg-pink-300 rounded-full flex items-center justify-center">*/}
-                            {/*    <img src="/lovable-Uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"*/}
+                            {/*    <img src="/Uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"*/}
                             {/*         className="w-8 h-8 rounded-full object-cover"/>*/}
                             {/*</div>*/}
                         </div>

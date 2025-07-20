@@ -66,7 +66,7 @@ const SignIn = () => {
         userName: data.user.userName,
         role: data.user.role,
         userType: userType,
-        photo: '/lovable-uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png'
+        photo: '/uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png'
       }));
 
       // Navigate based on role

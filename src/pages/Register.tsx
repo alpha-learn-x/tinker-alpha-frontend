@@ -70,7 +70,7 @@ const Register = () => {
         userName: data.user.userName,
         role: data.user.role,
         userType: 'student', // Assuming registration is for students
-        photo: '/lovable-uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png'
+        photo: '/uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png'
       }));
 
       setSuccessMessage("Registration successful! Redirecting to learning area...");

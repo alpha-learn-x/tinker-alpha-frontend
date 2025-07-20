@@ -92,7 +92,7 @@ const Cart = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <img src="/lovable-uploads/6ffc8098-6922-435a-99ef-f9c11d2729c4.png" alt="TinkerAlpha" className="h-8 w-auto" />
+              <img src="/uploads/6ffc8098-6922-435a-99ef-f9c11d2729c4.png" alt="TinkerAlpha" className="h-8 w-auto" />
               <h1 className="text-2xl font-bold text-blue-600">TinkerAlpha</h1>
             </div>
             <div className="hidden md:flex space-x-6">
