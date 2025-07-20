@@ -50,36 +50,36 @@ const DragAndDrop: React.FC = () => {
     const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(false);
     const [saveStatus, setSaveStatus] = useState<string | null>(null);
 
-    const questions: Question[] = [
+  const questions: Question[] = [
         {
             id: 1,
-            text: "What is Sri Lanka's national sport?",
-            correctAnswer: "Volleyball",
-            options: ["Sigiriya", "Nilmoné", "Sri Jayawardenepura Kotte", "Volleyball"]
+            text: "A complete path for current to flow is called a:",
+            correctAnswer: "Circuit",
+            options: ["Break", "Wire", "Circuit", "Loop"]
         },
         {
             id: 2,
-            text: "What is the capital of Sri Lanka?",
-            correctAnswer: "Sri Jayawardenepura Kotte",
-            options: ["Sigiriya", "Nilmoné", "Volleyball", "Sri Jayawardenepura Kotte"]
+            text: "What device is used to protect a circuit from too much current?",
+            correctAnswer: "Fuse",
+            options: ["Switch", "Bulb", "Fuse", "Battery"]
         },
         {
             id: 3,
-            text: "What is Sri Lanka's national animal?",
-            correctAnswer: "Giant Squirrel",
-            options: ["Sigiriya", "Nilmoné", "Volleyball", "Giant Squirrel"]
+            text: "What does a resistor do in a circuit?",
+            correctAnswer: "Resists the flow of current",
+            options: ["Stores energy", "Allows free flow of current", "Resists the flow of current", "Changes voltage to current"]
         },
         {
             id: 4,
-            text: "What is the name of the famous lion rock fortress in Sri Lanka?",
-            correctAnswer: "Sigiriya",
-            options: ["Nilmoné", "Volleyball", "Sri Jayawardenepura Kotte", "Sigiriya"]
+            text: "Which symbol is used for a battery in a circuit diagram?",
+            correctAnswer: "A short and a long line",
+            options: ["Circle with a cross", "A short and a long line", "Stores energy", "Allows free flow of current"]
         },
         {
             id: 5,
-            text: "What is Sri Lanka's national flower?",
-            correctAnswer: "Nilmoné",
-            options: ["Volleyball", "Sigiriya", "Sri Jayawardenepura Kotte", "Nilmoné"]
+            text: "What kind of circuit has only one path for current to flow?",
+            correctAnswer: "Series circuit",
+            options: ["Parallel circuit", "Mixed circuit", "Series circuit", "Open circuit"]
         },
     ];
 

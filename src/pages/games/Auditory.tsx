@@ -55,38 +55,38 @@ const Auditory: React.FC = () => {
     const questions: Question[] = [
         {
             id: 1,
-            text: "What is Sri Lanka's administrative capital?",
-            correctAnswer: "Sri Jayawardenepura Kotte",
+            text: "What does a battery do in an electric circuit?",
+            correctAnswer: "It provides electrical energy",
             audioText: "Listen carefully: Sri Lanka's administrative capital is different from its commercial capital. It's located near Colombo.",
-            options: ["Colombo", "Kandy", "Sri Jayawardenepura Kotte", "Anuradhapura"]
+            options: ["It stops the current", " It lights up the bulb", "It provides electrical energy", "It cools the circuit"]
         },
         {
             id: 2,
-            text: "What is a famous city known for its temple?",
-            correctAnswer: "Kandy",
+            text: "Which material is a good conductor of electricity?",
+            correctAnswer: "Copper",
             audioText: "This city is home to the famous Temple of the Tooth and is considered the cultural capital of Sri Lanka.",
-            options: ["Colombo", "Kandy", "Anuradhapura", "Galle"]
+            options: ["Plastic", "Wood", "Rubber", "Copper"]
         },
         {
             id: 3,
-            text: "What is the commercial capital of Sri Lanka?",
-            correctAnswer: "Colombo",
+            text: "What unit is used to measure electric current?",
+            correctAnswer: "Ampere",
             audioText: "This bustling city is the largest in Sri Lanka and serves as its main commercial hub and port city.",
-            options: ["Kandy", "Colombo", "Anuradhapura", "Jaffna"]
+            options: ["Volt", "Ampere", "Watt", "Ohm"]
         },
         {
             id: 4,
-            text: "What is an ancient city with a famous dagoba?",
-            correctAnswer: "Anuradhapura",
+            text: "Which of the following is an example of an insulator?",
+            correctAnswer: "Glass",
             audioText: "This ancient city was the first capital of Sri Lanka and is famous for its large stupas and sacred Bo tree.",
-            options: ["Colombo", "Kandy", "Galle", "Anuradhapura"]
+            options: ["Iron", "Silver", "Glass", "Aluminum"]
         },
         {
             id: 5,
-            text: "What is a coastal city known for its fort?",
-            correctAnswer: "Galle",
+            text: "What is the function of a switch in a circuit?",
+            correctAnswer: "To stop or allow current flow",
             audioText: "This UNESCO World Heritage site is famous for its well-preserved Dutch colonial fort by the sea.",
-            options: ["Colombo", "Anuradhapura", "Jaffna", "Galle"]
+            options: ["To increase voltage", "To stop or allow current flow", "To store energy", "To measure resistance"]
         },
     ];
 

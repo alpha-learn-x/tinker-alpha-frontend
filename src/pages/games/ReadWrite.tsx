@@ -23,36 +23,36 @@ const ReadWrite = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [saveStatus, setSaveStatus] = useState(null);
 
-    const questions = [
+      const questions = [
         {
             id: 1,
-            text: "What is the Capital of Sri Lanka?",
-            answer: "Colombo",
-            options: ["Colombo", "Kandy", "Galle", "Jaffna"]
+            text: "What does the symbol 'V' represent in an electric circuit?",
+            answer: "Voltage",
+            options: ["Velocity", "Volume", "Voltage", "Vacuum"]
         },
         {
             id: 2,
-            text: "What is the Sri Lanka's National Flower?",
-            answer: "Blue Lotus",
-            options: ["Blue Lotus", "Red Rose", "Jasmine", "Orchid"]
+            text: "What device converts electrical energy into light energy?",
+            answer: "Light bulb",
+            options: ["Motor", "Switch", "Light bulb", "Resistor"]
         },
         {
             id: 3,
-            text: "What is the famous Lion Rock Fortress in Sri Lanka?",
-            answer: "Sigiriya",
-            options: ["Sigiriya", "Anuradhapura", "Polonnaruwa", "Dambulla"]
+            text: "Which of these is not a source of electricity?",
+            answer: "Bulb",
+            options: ["Battery", "Generator", "Solar panel", "Bulb"]
         },
         {
             id: 4,
-            text: "What is the Sri Lanka's national sport?",
-            answer: "Volleyball",
-            options: ["Volleyball", "Cricket", "Football", "Tennis"]
+            text: "What happens when a circuit is open?",
+            answer: "Current does not flow",
+            options: ["Current flows easily", "Light turns on", "Current does not flow", "Battery gets charged"]
         },
         {
             id: 5,
-            text: "What is the Sri Lanka's national animal?",
-            answer: "Elephant",
-            options: ["Elephant", "Leopard", "Lion", "Tiger"]
+            text: "In which type of circuit does the current have more than one path to flow?",
+            answer: "Parallel circuit",
+            options: ["Open circuit", "Closed circuit", "Series circuit", "Parallel circuit"]
         },
     ];
 

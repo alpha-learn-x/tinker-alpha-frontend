@@ -49,43 +49,44 @@ const Visual: React.FC = () => {
     const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(false);
     const [saveStatus, setSaveStatus] = useState<string | null>(null);
 
-    const questions: Question[] = [
+       const questions: Question[] = [
         {
             id: 1,
-            text: "What should you do when the traffic light turns red?",
+            text: "What is used to measure voltage in a circuit?",
             pauseAt: 5,
-            answer: "Stop",
-            options: ["Go", "Stop", "Wait", "Run"]
+            answer: "Voltmeter",
+            options: ["Thermometer", "Voltmeter", "Ammeter", "Ohmmeter"]
         },
         {
             id: 2,
-            text: "What should you do when the traffic light turns green?",
+            text: "Which of the following is a renewable source of electricity?",
             pauseAt: 15,
-            answer: "Go",
-            options: ["Stop", "Go", "Wait", "Run"]
+            answer: "Solar energy",
+            options: ["Battery", "Coal", "Solar energy", "Natural gas"]
         },
         {
             id: 3,
-            text: "What should you do when the traffic light turns yellow?",
+            text: "Which of these components stores electrical energy?",
             pauseAt: 25,
-            answer: "Wait",
-            options: ["Go", "Stop", "Wait", "Run"]
+            answer: "Capacitor",
+            options: ["Wire", "Resistor", "Capacitor", "Diode"]
         },
         {
             id: 4,
-            text: "What should you do at a pedestrian crossing?",
+            text: "What does an LED stand for?",
             pauseAt: 35,
-            answer: "Wait",
-            options: ["Go", "Run", "Wait", "Stop"]
+            answer: "Light Emitting Diode",
+            options: ["Light Electricity Device", "Light Emitting Diode", "Long Electrical Device", "Low Energy Diode"]
         },
         {
             id: 5,
-            text: "What should you do when you see a yield sign?",
+            text: "What will happen if a bulb is removed from a series circuit?",
             pauseAt: 45,
-            answer: "Yield",
-            options: ["Go", "Stop", "Yield", "Run"]
+            answer: "All bulbs will go off",
+            options: ["Nothing happens", "All bulbs will glow brighter", "All bulbs will go off", "The voltage will increase"]
         },
     ];
+
 
     useEffect(() => {
         const userData: UserData = JSON.parse(localStorage.getItem('currentUser') || '{}');
