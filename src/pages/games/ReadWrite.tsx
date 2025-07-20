@@ -203,14 +203,14 @@ const ReadWrite = () => {
                     <div className="relative">
                         <div className="text-6xl mb-4 animate-bounce">🧠</div>
                         <h1 className="text-6xl font-bold text-white mb-6 animate-pulse">
-                            🪄 Sri Lanka Quiz Adventure!
+                            🪄 Test 1 - Read and Write 
                         </h1>
                         <div className="absolute -top-8 -left-8 text-5xl animate-spin">⭐</div>
                         <div className="absolute -top-8 -right-8 text-5xl animate-spin">⭐</div>
                     </div>
                     <div className="bg-white/90 rounded-3xl p-6 max-w-4xl mx-auto border-4 border-yellow-400 shadow-2xl">
                         <p className="text-2xl text-purple-800 font-bold mb-4">
-                            Hi {username || 'Student'}! 👋 Let's test your knowledge about Sri Lanka!
+                            Hi {username || 'Student'}! 👋 Let's test your knowledge about Basic Electronics!
                         </p>
                         <p className="text-lg text-blue-700">
                             🌟 Answer the questions below and submit to see your score! 🌟

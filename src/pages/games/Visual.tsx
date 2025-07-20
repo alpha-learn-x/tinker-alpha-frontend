@@ -222,7 +222,7 @@ const Visual: React.FC = () => {
                     <div className="relative">
                         <div className="text-6xl mb-4 animate-bounce">🧠</div>
                         <h1 className="text-6xl font-bold text-white mb-6 animate-pulse">
-                            🪄 Traffic Rules Quiz!
+                            🪄 Test 2 - Visual
                         </h1>
                         <div className="absolute -top-8 -left-8 text-5xl animate-spin">⭐</div>
                         <div className="absolute -top-8 -right-8 text-5xl animate-spin">⭐</div>
@@ -245,7 +245,7 @@ const Visual: React.FC = () => {
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
                     >
-                        <source src="https://example.com/traffic-video.mp4" type="video/mp4" />
+                        <source src="https://youtu.be/haaRTKm8ePQ" type="video/mp4"/>
                         Your browser does not support the video tag.
                     </video>
 
