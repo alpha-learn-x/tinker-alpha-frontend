@@ -336,7 +336,7 @@ const DragAndDrop: React.FC = () => {
                                         disabled={!answers[currentQuestionIndex] || isSubmitted}
                                         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-6 px-12 rounded-full text-3xl shadow-lg transform hover:scale-110 transition-all duration-300 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none border-4 border-white"
                                     >
-                                        🚀 Next! 🚀
+                                        Next!
                                     </Button>
                                 </div>
                             ) : (
@@ -405,7 +405,7 @@ const DragAndDrop: React.FC = () => {
                                         className="bg-gradient-to-r from-gray-600 to-gray-800 hover:from-gray-700 hover:to-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                                     >
                                         <Home className="mr-3 h-5 w-5" />
-                                        🏠 Back to Home
+                                        🏠 Home
                                     </Button>
                                 </Link>
                             </div>

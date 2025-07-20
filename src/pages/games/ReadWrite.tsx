@@ -262,7 +262,7 @@ const ReadWrite = () => {
                                     disabled={!answers[currentQuestionIndex] || isSubmitted}
                                     className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-6 px-12 rounded-full text-3xl shadow-lg transform hover:scale-110 transition-all duration-300 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none border-4 border-white"
                                 >
-                                    {currentQuestionIndex < questions.length - 1 ? '🚀 Next! 🚀' : '🚀 Submit My Answers! 🚀'}
+                                    {currentQuestionIndex < questions.length - 1 ? ' Next! ' : ' Submit My Answers! '}
                                 </button>
                             </div>
                         </div>
@@ -318,7 +318,7 @@ const ReadWrite = () => {
                             aria-label="Back to home"
                         >
                             <Home className="mr-3 h-5 w-5" />
-                            🏠 Back to Home
+                            🏠 Home
                         </button>
                     </Link>
                 </div>
