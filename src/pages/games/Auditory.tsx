@@ -386,7 +386,7 @@ const Auditory: React.FC = () => {
                     <div className="relative">
                         <div className="text-6xl mb-4 animate-bounce">🎧</div>
                         <h1 className="text-6xl font-bold text-white mb-6 animate-pulse">
-                            🎵 Sri Lanka Auditory Quiz!
+                            🎵 Test 4 - Auditory 
                         </h1>
                         <div className="absolute -top-8 -left-8 text-5xl animate-spin">⭐</div>
                         <div className="absolute -top-8 -right-8 text-5xl animate-spin">⭐</div>
@@ -540,7 +540,7 @@ const Auditory: React.FC = () => {
                                         disabled={!answers[currentQuestionIndex] || isSubmitted}
                                         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-6 px-12 rounded-full text-3xl shadow-lg transform hover:scale-110 transition-all duration-300 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none border-4 border-white"
                                     >
-                                        🚀 Next! 🚀
+                                         Next! 
                                     </Button>
                                 </div>
                             ) : (
