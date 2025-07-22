@@ -102,13 +102,7 @@ const Index = () => {
       description: "Start your electronics learning adventure",
       color: "from-blue-100 to-blue-200 border-blue-300"
     },
-    { 
-      type: "parent", 
-      icon: Users, 
-      title: "Parent", 
-      description: "Monitor your child's learning journey",
-      color: "from-green-100 to-green-200 border-green-300"
-    },
+   
     { 
       type: "teacher", 
       icon: User, 
@@ -166,7 +160,7 @@ const Index = () => {
           <Link to="/activities">
             <Button className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-12 py-6 text-2xl rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               <Play className="mr-4 h-6 w-6" />
-               START LEARNING NOW!
+               START LEARNING NOW
             </Button>
           </Link>
         </div>
