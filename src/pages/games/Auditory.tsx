@@ -37,19 +37,22 @@ interface UserData {
 
 const Auditory: React.FC = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
+    const batteryAudioRef = useRef<HTMLAudioElement>(null); // New ref for MP3
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
     const [answers, setAnswers] = useState<string[]>(Array(5).fill(''));
     const [marks, setMarks] = useState<number[]>(Array(5).fill(0));
     const [totalMarks, setTotalMarks] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isBatteryAudioPlaying, setIsBatteryAudioPlaying] = useState<boolean>(false); // New state for MP3
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
     const [userId, setUserId] = useState<string>('');
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [user, setUser] = useState<string>('');
     const [audioError, setAudioError] = useState<boolean>(false);
+    const [batteryAudioError, setBatteryAudioError] = useState<boolean>(false);
     const [language, setLanguage] = useState<string>("english");
-    const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(false);
+    const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(true); // Changed default to true
     const [saveStatus, setSaveStatus] = useState<string | null>(null);
 
     const questions: Question[] = [
@@ -57,40 +60,40 @@ const Auditory: React.FC = () => {
             id: 1,
             text: "What does a battery do in an electric circuit?",
             correctAnswer: "It provides electrical energy",
-            audioText: "Listen carefully: Sri Lanka's administrative capital is different from its commercial capital. It's located near Colombo.",
+            audioText: "What does a battery do in an electric circuit?",
             options: ["It stops the current", " It lights up the bulb", "It provides electrical energy", "It cools the circuit"]
         },
         {
             id: 2,
             text: "Which material is a good conductor of electricity?",
             correctAnswer: "Copper",
-            audioText: "This city is home to the famous Temple of the Tooth and is considered the cultural capital of Sri Lanka.",
+            audioText: "Which material is a good conductor of electricity?",
             options: ["Plastic", "Wood", "Rubber", "Copper"]
         },
         {
             id: 3,
             text: "What unit is used to measure electric current?",
             correctAnswer: "Ampere",
-            audioText: "This bustling city is the largest in Sri Lanka and serves as its main commercial hub and port city.",
+            audioText: "What unit is used to measure electric current?",
             options: ["Volt", "Ampere", "Watt", "Ohm"]
         },
         {
             id: 4,
             text: "Which of the following is an example of an insulator?",
             correctAnswer: "Glass",
-            audioText: "This ancient city was the first capital of Sri Lanka and is famous for its large stupas and sacred Bo tree.",
+            audioText: "Which of the following is an example of an insulator?",
             options: ["Iron", "Silver", "Glass", "Aluminum"]
         },
         {
             id: 5,
             text: "What is the function of a switch in a circuit?",
             correctAnswer: "To stop or allow current flow",
-            audioText: "This UNESCO World Heritage site is famous for its well-preserved Dutch colonial fort by the sea.",
+            audioText: "What is the function of a switch in a circuit?",
             options: ["To increase voltage", "To stop or allow current flow", "To store energy", "To measure resistance"]
         },
     ];
 
-    const speakText = (text: string): void => {
+  const speakText = (text: string): void => {
         if ('speechSynthesis' in window && isSoundEnabled) {
             window.speechSynthesis.cancel();
 
@@ -124,6 +127,86 @@ const Auditory: React.FC = () => {
         }
     };
 
+    // Fixed function to toggle MP3 playbook with better error handling
+    const toggleBatteryAudio = (): void => {
+        if (batteryAudioRef.current) {
+            if (isBatteryAudioPlaying) {
+                batteryAudioRef.current.pause();
+                setIsBatteryAudioPlaying(false);
+            } else {
+                // Pause any ongoing speech synthesis to avoid overlap
+                stopSpeech();
+
+                // Reset audio to beginning if it has ended
+                if (batteryAudioRef.current.ended) {
+                    batteryAudioRef.current.currentTime = 0;
+                }
+
+                batteryAudioRef.current.play()
+                    .then(() => {
+                        setIsBatteryAudioPlaying(true);
+                        setBatteryAudioError(false);
+                    })
+                    .catch((error) => {
+                        console.error("Error playing MP3:", error);
+                        setBatteryAudioError(true);
+                        setIsBatteryAudioPlaying(false);
+                    });
+            }
+        } else {
+            console.error("Audio ref not available");
+            setBatteryAudioError(true);
+        }
+    };
+
+    // Initialize audio and setup event listeners
+    useEffect(() => {
+        const audio = batteryAudioRef.current;
+        if (audio) {
+            // Audio event listeners
+            const handleLoadedData = () => {
+                console.log("Audio loaded successfully");
+                setBatteryAudioError(false);
+            };
+
+            const handleError = (e: Event) => {
+                console.error("Audio loading error:", e);
+                setBatteryAudioError(true);
+            };
+
+            const handleEnded = () => {
+                setIsBatteryAudioPlaying(false);
+            };
+
+            const handlePlay = () => {
+                setIsBatteryAudioPlaying(true);
+            };
+
+            const handlePause = () => {
+                setIsBatteryAudioPlaying(false);
+            };
+
+            // Add event listeners
+            audio.addEventListener('loadeddata', handleLoadedData);
+            audio.addEventListener('error', handleError);
+            audio.addEventListener('ended', handleEnded);
+            audio.addEventListener('play', handlePlay);
+            audio.addEventListener('pause', handlePause);
+
+            // Preload the audio
+            audio.preload = 'metadata';
+
+            return () => {
+                // Cleanup event listeners
+                audio.removeEventListener('loadeddata', handleLoadedData);
+                audio.removeEventListener('error', handleError);
+                audio.removeEventListener('ended', handleEnded);
+                audio.removeEventListener('play', handlePlay);
+                audio.removeEventListener('pause', handlePause);
+            };
+        }
+    }, []);
+
     useEffect(() => {
         const userData: UserData = JSON.parse(localStorage.getItem('currentUser') || '{}');
         setUser(userData.id || '');
@@ -135,7 +218,14 @@ const Auditory: React.FC = () => {
             speakText(questions[currentQuestionIndex].audioText);
         }, 500);
 
-        return () => clearTimeout(timer);
+        // Cleanup MP3 audio on component unmount or question change
+        return () => {
+            clearTimeout(timer);
+            if (batteryAudioRef.current && isBatteryAudioPlaying) {
+                batteryAudioRef.current.pause();
+                setIsBatteryAudioPlaying(false);
+            }
+        };
     }, [currentQuestionIndex]);
 
     const handleAnswerSelect = (value: string): void => {
@@ -154,6 +244,10 @@ const Auditory: React.FC = () => {
 
     const handleNext = (): void => {
         stopSpeech();
+        if (batteryAudioRef.current && isBatteryAudioPlaying) {
+            batteryAudioRef.current.pause();
+            setIsBatteryAudioPlaying(false);
+        }
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSaveStatus(null);
@@ -164,6 +258,10 @@ const Auditory: React.FC = () => {
 
     const handleSubmit = async (): Promise<void> => {
         stopSpeech();
+        if (batteryAudioRef.current && isBatteryAudioPlaying) {
+            batteryAudioRef.current.pause();
+            setIsBatteryAudioPlaying(false);
+        }
         if (!user || !userId || !username || !email) {
             setSaveStatus('Please log in to submit quiz results.');
             return;
@@ -179,7 +277,7 @@ const Auditory: React.FC = () => {
 
         try {
             const response = await axios.post('http://localhost:5000/api/v1/quizzes/saveQuizResults', {
-                quizName:"AUDITORY",
+                quizName: "AUDITORY",
                 user,
                 userId,
                 username,
@@ -196,6 +294,11 @@ const Auditory: React.FC = () => {
     };
 
     const handleReplayAudio = (): void => {
+        // Stop MP3 if playing
+        if (batteryAudioRef.current && isBatteryAudioPlaying) {
+            batteryAudioRef.current.pause();
+            setIsBatteryAudioPlaying(false);
+        }
         speakText(questions[currentQuestionIndex].audioText);
     };
 
@@ -209,16 +312,25 @@ const Auditory: React.FC = () => {
         if (isPlaying) {
             stopSpeech();
         }
+        if (batteryAudioRef.current && isBatteryAudioPlaying) {
+            batteryAudioRef.current.pause();
+            setIsBatteryAudioPlaying(false);
+        }
     };
 
     const resetQuiz = (): void => {
         stopSpeech();
+        if (batteryAudioRef.current && isBatteryAudioPlaying) {
+            batteryAudioRef.current.pause();
+            setIsBatteryAudioPlaying(false);
+        }
         setCurrentQuestionIndex(0);
         setAnswers(Array(5).fill(''));
         setMarks(Array(5).fill(0));
         setTotalMarks(0);
         setIsSubmitted(false);
         setAudioError(false);
+        setBatteryAudioError(false);
         setSaveStatus(null);
     };
 
@@ -254,11 +366,27 @@ const Auditory: React.FC = () => {
                         {saveStatus}
                     </div>
                 )}
+
+                {/* Sound Toggle Button */}
+                <div className="fixed top-20 right-4 z-50">
+                    <Button
+                        onClick={toggleSound}
+                        className={`p-3 rounded-full shadow-lg ${
+                            isSoundEnabled
+                                ? 'bg-green-500 hover:bg-green-600'
+                                : 'bg-red-500 hover:bg-red-600'
+                        } text-white transition-all duration-300`}
+                        title={isSoundEnabled ? 'Disable Sound' : 'Enable Sound'}
+                    >
+                        {isSoundEnabled ? <Volume2 className="h-6 w-6" /> : <VolumeX className="h-6 w-6" />}
+                    </Button>
+                </div>
+
                 <div className="text-center mb-16">
                     <div className="relative">
                         <div className="text-6xl mb-4 animate-bounce">🎧</div>
                         <h1 className="text-6xl font-bold text-white mb-6 animate-pulse">
-                            🎵 Test 4 -Auditory
+                            🎵 Test 4 - Auditory 
                         </h1>
                         <div className="absolute -top-8 -left-8 text-5xl animate-spin">⭐</div>
                         <div className="absolute -top-8 -right-8 text-5xl animate-spin">⭐</div>
@@ -274,6 +402,18 @@ const Auditory: React.FC = () => {
                 </div>
 
                 <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border-4 border-yellow-300 flex-1 flex flex-col items-center">
+                    {/* Fixed Audio Element with proper error handling */}
+                    <audio
+                        ref={batteryAudioRef}
+                        preload="metadata"
+                        onError={() => setBatteryAudioError(true)}
+                        onLoadedData={() => setBatteryAudioError(false)}
+                    >
+                        <source src="/what_does_a_battery_do.mp3" type="audio/mpeg" />
+                        <source src="/what_does_a_battery_do.wav" type="audio/wav" />
+                        Your browser does not support the audio element.
+                    </audio>
+
                     {!isSubmitted ? (
                         <div className="space-y-8 w-full">
                             <div className="text-center mb-4">
@@ -290,7 +430,7 @@ const Auditory: React.FC = () => {
                                     </p>
                                 </div>
 
-                                <div className="flex justify-center items-center space-x-4 mb-6">
+                                <div className="flex justify-center items-center space-x-4 mb-6 flex-wrap gap-4">
                                     <Button
                                         onClick={handleReplayAudio}
                                         disabled={isPlaying || !isSoundEnabled}
@@ -322,11 +462,44 @@ const Auditory: React.FC = () => {
                                             <span>Stop</span>
                                         </Button>
                                     )}
+
+                                    {/* Fixed MP3 Button with better error handling */}
+                                    <Button
+                                        onClick={toggleBatteryAudio}
+                                        disabled={!isSoundEnabled || batteryAudioError}
+                                        className={`flex items-center space-x-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                                            batteryAudioError
+                                                ? 'bg-gray-400 cursor-not-allowed'
+                                                : isBatteryAudioPlaying
+                                                    ? 'bg-orange-500 hover:bg-orange-600 text-white hover:scale-105'
+                                                    : 'bg-green-500 hover:bg-green-600 text-white hover:scale-105'
+                                        } ${!isSoundEnabled ? 'bg-gray-300 cursor-not-allowed' : ''}`}
+                                    >
+                                        {batteryAudioError ? (
+                                            <>
+                                                <VolumeX className="h-5 w-5" />
+                                                <span>Audio Error</span>
+                                            </>
+                                        ) : isBatteryAudioPlaying ? (
+                                            <>
+                                                <Pause className="h-5 w-5" />
+                                                <span>Pause Battery Audio</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Play className="h-5 w-5" />
+                                                <span>🔋 Play Battery Audio</span>
+                                            </>
+                                        )}
+                                    </Button>
                                 </div>
 
-                                {audioError && (
+                                {(audioError || batteryAudioError) && (
                                     <div className="text-center text-red-600 mb-4">
                                         <p>🔇 Audio not available - please read the question above</p>
+                                        {batteryAudioError && (
+                                            <p className="text-sm">Make sure the MP3 file is in the public directory</p>
+                                        )}
                                     </div>
                                 )}
 
@@ -367,7 +540,7 @@ const Auditory: React.FC = () => {
                                         disabled={!answers[currentQuestionIndex] || isSubmitted}
                                         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-6 px-12 rounded-full text-3xl shadow-lg transform hover:scale-110 transition-all duration-300 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none border-4 border-white"
                                     >
-                                        Next!
+                                         Next! 
                                     </Button>
                                 </div>
                             ) : (
@@ -377,7 +550,7 @@ const Auditory: React.FC = () => {
                                         disabled={!answers[currentQuestionIndex] || isSubmitted}
                                         className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-6 px-12 rounded-full text-3xl shadow-lg transform hover:scale-110 transition-all duration-300 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none border-4 border-white"
                                     >
-                                        🚀 Submit My Answers! 🚀
+                                         Submit My Answers! 
                                     </Button>
                                 </div>
                             )}
@@ -436,7 +609,7 @@ const Auditory: React.FC = () => {
                                         className="bg-gradient-to-r from-gray-600 to-gray-800 hover:from-gray-700 hover:to-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                                     >
                                         <Home className="mr-3 h-5 w-5" />
-                                        🏠  Home
+                                        🏠 Home
                                     </Button>
                                 </Link>
                             </div>
