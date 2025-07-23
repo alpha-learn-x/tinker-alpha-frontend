@@ -11,7 +11,7 @@ const Activities = () => {
 
   useEffect(() => {
     // Add background music for kids
-    const audio = new Audio('https://www.soundjay.com/misc/sounds/magic-chime-02.wav');
+    const audio = new Audio('https://example.com/kids-background-music.mp3');
     audio.loop = true;
     audio.volume = 0.3;
 
