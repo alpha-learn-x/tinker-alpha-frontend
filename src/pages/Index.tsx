@@ -100,7 +100,17 @@ const Index = () => {
       description: "Start your electronics learning adventure",
       color: "from-blue-100 to-blue-200 border-blue-300"
     },
-
+    {
+      type: "parent",
+      icon: Users,
+      title: "Parent",
+      description: "Monitor your child's learning journey",
+      color: "from-green-100 to-green-200 border-green-300"
+    },
+    {
+      type: "teacher",
+      icon: User,
+      title: "Teacher",
       description: "Manage classes and track student progress",
       color: "from-purple-100 to-purple-200 border-purple-300"
     }
@@ -108,26 +118,26 @@ const Index = () => {
 
   const testimonials = [
     {
-      
       name: "Nimasha Thilakarathne",
       role: "Parent",
       rating: 5,
       comment: "TinkerAlpha has made learning electronics so fun for my daughter! She's excited about every lesson.",
+      avatar: "👩🦳"
     },
     {
-      
       name: "Sandun Dissanayake",
       role: "Teacher",
       rating: 5,
       comment: "The gamification and interactive activities keep students engaged throughout the entire lesson.",
+      avatar: "👨🏫"
     },
     {
-      
       name: "Fathima Afla",
       role: "Parent",
       rating: 5,
       comment: "The progress tracking helps me understand exactly how my son is developing his STEM skills.",
-
+      avatar: "👩💼"
+    }
   ];
 
   return (
@@ -150,14 +160,14 @@ const Index = () => {
           <Link to="/activities">
             <Button className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-12 py-6 text-2xl rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               <Play className="mr-4 h-6 w-6" />
-
+              START LEARNING NOW!
             </Button>
           </Link>
         </div>
 
         {/* User Type Section */}
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-center text-blue-800 mb-8"> 🙋🏻‍♀️Choose Your Role & Sign In</h2>
+          <h2 className="text-4xl font-bold text-center text-blue-800 mb-8"> 🙋🏻♀️Choose Your Role & Sign In</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {userTypes.map((userType) => {
               const IconComponent = userType.icon;
@@ -220,25 +230,27 @@ const Index = () => {
             pagination={{ clickable: true }}
             autoplay={{ delay: 5000 }}
             spaceBetween={30}
-            slidesPerView={3}     // Show 3 slides at a time on larger screens
-            breakpoints={{
-              0: {
-                slidesPerView: 1, // 1 slide on small screens (mobile)
-              },
-              640: {
-                slidesPerView: 2, // 2 slides on small tablets
-              },
-              1024: {
-                slidesPerView: 3, // 3 slides on desktop and larger
-              },
-            }}
-            className="max-w-7xl mx-auto"
+            slidesPerView={1}
+            className="max-w-3xl mx-auto"
           >
             {testimonials.map((testimonial, index) => (
-
+              <SwiperSlide key={index}>
+                <Card className="bg-gradient-to-b from-blue-50 to-blue-100 border-2 border-blue-200">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-4xl mb-4">{testimonial.avatar}</div>
+                    <div className="flex justify-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-500 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-blue-700 italic mb-4">"{testimonial.comment}"</p>
+                    <h4 className="font-bold text-blue-800">{testimonial.name}</h4>
+                    <p className="text-blue-600 text-sm">{testimonial.role}</p>
+                  </CardContent>
+                </Card>
+              </SwiperSlide>
             ))}
           </Swiper>
-
         </div>
       </div>
 
