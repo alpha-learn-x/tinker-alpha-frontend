@@ -35,31 +35,32 @@ const Subjects = () => {
   const subjects = [
     {
       id: 1,
-      title: "Basic Electronics",
-      description: "Start your journey with fundamental concepts of electricity and circuits",
-      icon: "⚡",
+      title: "Engineering",
+      description: "Engineer your ideas into reality using logic, creativity, and hands-on learning.",
+      icon: "👷‍♀️",
       color: "from-blue-400 to-blue-600",
       borderColor: "border-blue-300",
       activities: 8,
       level: "Beginner",
-      emoji: "🔌"
+      emoji: "💡"
+
     },
     {
       id: 2,
-      title: "Circuit Building",
-      description: "Learn to design and build amazing electronic circuits",
-      icon: "🔧",
+      title: "Science",
+      description: "Observe, experiment, and discover the laws that govern everything around us",
+      icon: "👩‍🔬",
       color: "from-green-400 to-green-600",
       borderColor: "border-green-300",
       activities: 12,
       level: "Intermediate",
-      emoji: "🔩"
+      emoji: "🧪"
     },
     {
       id: 3,
-      title: "Motors & Movement",
-      description: "Explore how electricity creates motion and builds motors",
-      icon: "🔄",
+      title: "Technology",
+      description: "Learn how software, apps, and gadgets are designed to solve real-world problems",
+      icon: "🤖",
       color: "from-purple-400 to-purple-600",
       borderColor: "border-purple-300",
       activities: 10,
@@ -68,37 +69,27 @@ const Subjects = () => {
     },
     {
       id: 4,
-      title: "Automation & Control",
-      description: "Discover how to make machines think and work automatically",
-      icon: "🤖",
+      title: "Arts",
+      description: "Bring your ideas to life using colors, sounds, and motion",
+      icon: "👩🏻‍🎨",
       color: "from-orange-400 to-orange-600",
       borderColor: "border-orange-300",
       activities: 15,
       level: "Advanced",
-      emoji: "🎮"
+      emoji: "🎨"
     },
     {
       id: 5,
-      title: "Robotics",
-      description: "Build and program your own robots that can move and think",
-      icon: "🦾",
+      title: "Mathematics",
+      description: "Explore the patterns, shapes, and equations that shape the universe",
+      icon: "👨🏻‍🏫",
       color: "from-red-400 to-red-600",
       borderColor: "border-red-300",
       activities: 20,
       level: "Advanced",
-      emoji: "🤖"
+      emoji: "🧮"
     },
-    {
-      id: 6,
-      title: "Digital Logic",
-      description: "Learn how computers think using ones and zeros",
-      icon: "💻",
-      color: "from-indigo-400 to-indigo-600",
-      borderColor: "border-indigo-300",
-      activities: 18,
-      level: "Advanced",
-      emoji: "🔢"
-    }
+    
   ];
 
   const getLevelColor = (level: string) => {
@@ -252,7 +243,7 @@ const Subjects = () => {
             <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4 text-yellow-300">Contact</h4>
               <p className="text-purple-200 mb-2">📧 hello@tinkeralpha.com</p>
-              <p className="text-purple-200 mb-2">📞 +94712345677</p>
+              <p className="text-purple-200 mb-2">📞 +94718771343</p>
               <p className="text-purple-200">🌍 Sri Lanka</p>
             </div>
           </div>
