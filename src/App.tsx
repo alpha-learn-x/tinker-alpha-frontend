@@ -26,6 +26,7 @@ import Visual from "@/pages/games/Visual.tsx";
 import DragAndDrop from "@/pages/games/DragAndDrop.tsx";
 import Auditory from "@/pages/games/Auditory.tsx";
 import GameContext from "@/pages/games/GameContext.tsx";
+import Students from "@/pages/Students.tsx";
 
 
 const queryClient = new QueryClient();
@@ -150,11 +151,18 @@ const App = () => (
                 <GameContext />
               </ProtectedRoute>
             } />
+
+            <Route path="/students" element={
+              <ProtectedRoute>
+                <Students />
+              </ProtectedRoute>
+            } />
             <Route path="/add-activity" element={
               <ProtectedRoute requireTeacher={true}>
                 <AddActivity />
               </ProtectedRoute>
             } />
+
             <Route path="/modularity" element={
               <ProtectedRoute>
                 <Modularities />
