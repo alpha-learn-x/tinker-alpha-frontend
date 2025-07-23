@@ -69,13 +69,32 @@ const Dashboard = () => {
         { name: "Not Started", value: 25, color: "#e5e7eb" }
     ];
 
+    // New data based on the Teacher Dashboard image
+    const teacherMetrics = {
+        totalStudents: 128,
+        activeLearners: 45,
+        averageProgress: 84,
+        needAttention: 7
+    };
+
+    const learningModalities = [
+        { name: "Visual", value: 75 },
+        { name: "Auditory", value: 65 },
+        { name: "Kinesthetic", value: 70 },
+        { name: "Reading", value: 60 }
+    ];
+
+    const weakestAreas = [
+        { name: "Math Concepts", value: 30 },
+        { name: "Reading Comprehension", value: 25 },
+        { name: "Science Experiments", value: 20 },
+        { name: "Creative Writing", value: 25 }
+    ];
+
     const sidebarItems = [
         { name: "Overview", icon: Home, active: true },
         { name: "Reports", icon: FileText, path: "/reports" },
-        { name: "Inbox", icon: MessageSquare, path: "/inbox" },
-        { name: "My Status", icon: User },
-        { name: "Certificates", icon: Award, path: "/certificates" },
-        { name: "Feedback", icon: MessageSquare },
+        { name: "Students", icon: FileText, path: "/students" },
         ...(isTeacher ? [{ name: "Add New Activity", icon: MessageSquare, path: "/add-activity" }] : [])
     ];
 
@@ -94,9 +113,7 @@ const Dashboard = () => {
                 const response = await axios.get('http://localhost:5000/api/v1/quizzes/get-all-quiz-results', {
                     params: isTeacher ? {} : { searchText: userName }
                 });
-                console.log(response);
                 setQuizResults(response.data.data);
-                console.log('Quiz results fetched:', response.data.data);
             } catch (error: any) {
                 console.error('Error fetching quiz results:', error.response?.data || error.message);
                 setError('Failed to load quiz results. Please try again later.');
@@ -205,15 +222,6 @@ const Dashboard = () => {
                                 <LogOut className="w-4 h-4 mr-2"/>
                                 Logout
                             </Button>
-
-                            {/*<div className="relative">*/}
-                            {/*    <Bell className="w-6 h-6 text-blue-600 cursor-pointer hover:text-blue-800"/>*/}
-                            {/*    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>*/}
-                            {/*</div>*/}
-                            {/*<div className="w-10 h-10 bg-pink-300 rounded-full flex items-center justify-center">*/}
-                            {/*    <img src="/Uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png" alt="Student"*/}
-                            {/*         className="w-8 h-8 rounded-full object-cover"/>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
 
@@ -222,18 +230,92 @@ const Dashboard = () => {
                         <CardContent className="p-6">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <h3 className="text-xl font-bold text-pink-800 mb-2">Check the students
-                                        progress</h3>
-                                    <p className="text-pink-600">Welcome back! We're here to support your child on their
-                                        learning journey. Check the classes and keep progressing towards your goals.</p>
+                                    <h3 className="text-xl font-bold text-pink-800 mb-2">Teacher Dashboard</h3>
+                                    <p className="text-pink-600">Welcome back! Here's what's happening with your students today.</p>
                                 </div>
                             </div>
                         </CardContent>
                     </Card>
 
+                    {/* Metrics Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <Card className="bg-purple-100 border-purple-200">
+                            <CardContent className="p-6 text-center">
+                                <p className="text-purple-800">Total Students</p>
+                                <h3 className="text-2xl font-bold text-purple-900">{teacherMetrics.totalStudents}</h3>
+                                <p className="text-sm text-purple-600">Active learners: {teacherMetrics.activeLearners}</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="bg-green-100 border-green-200">
+                            <CardContent className="p-6 text-center">
+                                <p className="text-green-800">Activities Assigned</p>
+                                <h3 className="text-2xl font-bold text-green-900">{teacherMetrics.activeLearners}</h3>
+                                <p className="text-sm text-green-600">+12% from last week</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="bg-blue-100 border-blue-200">
+                            <CardContent className="p-6 text-center">
+                                <p className="text-blue-800">Average Progress</p>
+                                <h3 className="text-2xl font-bold text-blue-900">{teacherMetrics.averageProgress}%</h3>
+                                <p className="text-sm text-blue-600">Class completion rate +3% from last week</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="bg-yellow-100 border-yellow-200">
+                            <CardContent className="p-6 text-center">
+                                <p className="text-yellow-800">Need Attention</p>
+                                <h3 className="text-2xl font-bold text-yellow-900">{teacherMetrics.needAttention}</h3>
+                                <p className="text-sm text-yellow-600">Students struggling +2% from last week</p>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Charts Section */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <Card className="bg-white border-gray-200">
+                            <CardHeader>
+                                <CardTitle className="text-blue-800">Learning Modalities Distribution</CardTitle>
+                                <p className="text-gray-600">Student performance across different learning styles</p>
+                            </CardHeader>
+                            <CardContent>
+                                {/* Bar Chart for Learning Modalities */}
+                                {/*<chartjs type="bar" data={{*/}
+                                {/*    labels: learningModalities.map(item => item.name),*/}
+                                {/*    datasets: [{*/}
+                                {/*        label: 'Performance',*/}
+                                {/*        data: learningModalities.map(item => item.value),*/}
+                                {/*        backgroundColor: '#8B5CF6',*/}
+                                {/*        borderColor: '#7C3AED',*/}
+                                {/*        borderWidth: 1*/}
+                                {/*    }]*/}
+                                {/*}} options={{*/}
+                                {/*    scales: {y: {beginAtZero: true, max: 100}},*/}
+                                {/*    plugins: { legend: { display: false } }*/}
+                                {/*}} />*/}
+                            </CardContent>
+                        </Card>
+                        <Card className="bg-white border-gray-200">
+                            <CardHeader>
+                                <CardTitle className="text-blue-800">Weakest Learning Areas</CardTitle>
+                                <p className="text-gray-600">Areas where students need more support</p>
+                            </CardHeader>
+                            <CardContent>
+                                {/* Pie Chart for Weakest Learning Areas */}
+                                {/*<chartjs type="pie" data={{*/}
+                                {/*    labels: weakestAreas.map(item => item.name),*/}
+                                {/*    datasets: [{*/}
+                                {/*        data: weakestAreas.map(item => item.value),*/}
+                                {/*        backgroundColor: ['#60A5FA', '#F472B6', '#34D399', '#FBBF24'],*/}
+                                {/*        borderColor: ['#3B82F6', '#EC4899', '#10B981', '#F59E0B'],*/}
+                                {/*        borderWidth: 1*/}
+                                {/*    }]*/}
+                                {/*}} options={{ plugins: { legend: { position: 'bottom' } } }} />*/}
+                            </CardContent>
+                        </Card>
+                    </div>
+
                     {/* Quiz Results Table - Only for Teachers */}
                     {isTeacher && (
-                        <Card className="mb-8">
+                        <Card className="mb-8 mt-8">
                             <CardHeader>
                                 <div className="flex items-center justify-between">
                                     <CardTitle className="text-blue-800">All Students Quiz Results</CardTitle>
