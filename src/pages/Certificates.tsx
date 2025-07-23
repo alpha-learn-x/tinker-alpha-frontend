@@ -9,54 +9,55 @@ import Header from "@/components/Header.tsx";
 const Certificates = () => {
   const childData = {
     name: "Sonali Fernando",
-    age: 8,
+    age: 12,
     batch: "Batch A",
-    enrolledDate: "January 2024",
+    enrolledDate: "January 2025",
     photo: "/uploads/00d4cb2f-56bd-4d1f-955b-70e4a28236e0.png"
   };
 
   const certificates = [
     {
       id: 1,
-      title: "Circuit Master Certificate",
-      completedDate: "March 15, 2024",
-      activity: "Simple Electric Circuit",
-      score: "95%",
+      title: "Modality Test",
+      completedDate: "August 15, 2025",
+      activity: "Award for Excellence in Visual Learning",
+      score: "85%",
       earned: true
+      
     },
     {
       id: 2,
-      title: "Motor Builder Certificate",
+      title: "Modality Test",
       completedDate: "Pending",
-      activity: "Building a Simple Motor",
-      score: "75%",
+      activity: "Written Logic Award – Read/Write Excellence",
+      score: "Not scored yet",
       earned: false
     },
     {
       id: 3,
-      title: "Automation Expert Certificate",
+      title: "Modality Test",
       completedDate: "Pending",
-      activity: "Traffic Light Automation",
-      score: "30%",
+      activity: "Kinesthetic Innovator in Electronics",
+      score: "Not scored yet",
       earned: false
     },
     {
       id: 4,
-      title: "Robot Creator Certificate",
+      title: "Modality Test",
       completedDate: "Pending",
-      activity: "Building a Simple Robot",
-      score: "0%",
+      activity: "Sound Scholar in Electronics",
+      score: "Not scored yet",
       earned: false
     }
   ];
 
   const badges = [
-    { name: "First Circuit", icon: "⚡", earned: true, description: "Completed first circuit activity" },
-    { name: "Problem Solver", icon: "🧩", earned: true, description: "Solved 10 puzzles" },
-    { name: "Quick Learner", icon: "🚀", earned: true, description: "Completed activity in record time" },
-    { name: "Helping Hand", icon: "🤝", earned: false, description: "Helped 5 classmates" },
-    { name: "Perfect Score", icon: "💯", earned: false, description: "Got 100% in any activity" },
-    { name: "Curious Mind", icon: "🔍", earned: true, description: "Asked 20 questions" }
+    { name: "Visual Visionary", icon: "🎗️", earned: true, description: "Completed visual learning activity" },
+    { name: "Sound Seeker", icon: "🎗️", earned: true, description: "Completed sound learning activity" },
+    { name: "Hands-On Hero", icon: "🎗️", earned: true, description: "Completed hands-on learning activity" },
+    { name: "Helping Hand", icon: "🎗️", earned: false, description: "Helped 5 classmates" },
+    { name: "Perfect Score", icon: "🎗️", earned: false, description: "Got 100% in any activity" },
+    { name: "Curious Mind", icon: "🎗️", earned: true, description: "Asked 20 questions" }
   ];
 
   const handleDownloadCertificate = (certTitle: string) => {
