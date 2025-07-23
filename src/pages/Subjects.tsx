@@ -37,29 +37,30 @@ const Subjects = () => {
       id: 1,
       title: "Engineering",
       description: "Start your journey with fundamental concepts of electricity and circuits",
-      icon: "⚡",
+      icon: "👷‍♀️",
       color: "from-blue-400 to-blue-600",
       borderColor: "border-blue-300",
       activities: 8,
       level: "Beginner",
-      emoji: "🔌"
+      emoji: "💡"
+
     },
     {
       id: 2,
       title: "Science",
       description: "Learn to design and build amazing electronic circuits",
-      icon: "🔧",
+      icon: "👩‍🔬",
       color: "from-green-400 to-green-600",
       borderColor: "border-green-300",
       activities: 12,
       level: "Intermediate",
-      emoji: "🔩"
+      emoji: "🧪"
     },
     {
       id: 3,
       title: "Technology",
       description: "Explore how electricity creates motion and builds motors",
-      icon: "🔄",
+      icon: "🤖",
       color: "from-purple-400 to-purple-600",
       borderColor: "border-purple-300",
       activities: 10,
@@ -70,35 +71,25 @@ const Subjects = () => {
       id: 4,
       title: "Arts",
       description: "Discover how to make machines think and work automatically",
-      icon: "🤖",
+      icon: "👩🏻‍🎨",
       color: "from-orange-400 to-orange-600",
       borderColor: "border-orange-300",
       activities: 15,
       level: "Advanced",
-      emoji: "🎮"
+      emoji: "🎨"
     },
     {
       id: 5,
-      title: "Mathematics",
+      title: "Mathematis",
       description: "Build and program your own robots that can move and think",
-      icon: "🦾",
+      icon: "👨🏻‍🏫",
       color: "from-red-400 to-red-600",
       borderColor: "border-red-300",
       activities: 20,
       level: "Advanced",
-      emoji: "🤖"
+      emoji: "🧮"
     },
-    {
-      id: 6,
-      title: "Digital Logic",
-      description: "Learn how computers think using ones and zeros",
-      icon: "💻",
-      color: "from-indigo-400 to-indigo-600",
-      borderColor: "border-indigo-300",
-      activities: 18,
-      level: "Advanced",
-      emoji: "🔢"
-    }
+    
   ];
 
   const getLevelColor = (level: string) => {
