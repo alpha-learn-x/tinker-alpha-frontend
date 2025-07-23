@@ -36,7 +36,7 @@ const Subjects = () => {
     {
       id: 1,
       title: "Engineering",
-      description: "Start your journey with fundamental concepts of electricity and circuits",
+      description: "Engineer your ideas into reality using logic, creativity, and hands-on learning.",
       icon: "👷‍♀️",
       color: "from-blue-400 to-blue-600",
       borderColor: "border-blue-300",
@@ -48,7 +48,7 @@ const Subjects = () => {
     {
       id: 2,
       title: "Science",
-      description: "Learn to design and build amazing electronic circuits",
+      description: "Observe, experiment, and discover the laws that govern everything around us",
       icon: "👩‍🔬",
       color: "from-green-400 to-green-600",
       borderColor: "border-green-300",
@@ -59,7 +59,7 @@ const Subjects = () => {
     {
       id: 3,
       title: "Technology",
-      description: "Explore how electricity creates motion and builds motors",
+      description: "Learn how software, apps, and gadgets are designed to solve real-world problems",
       icon: "🤖",
       color: "from-purple-400 to-purple-600",
       borderColor: "border-purple-300",
@@ -70,7 +70,7 @@ const Subjects = () => {
     {
       id: 4,
       title: "Arts",
-      description: "Discover how to make machines think and work automatically",
+      description: "Bring your ideas to life using colors, sounds, and motion",
       icon: "👩🏻‍🎨",
       color: "from-orange-400 to-orange-600",
       borderColor: "border-orange-300",
@@ -80,8 +80,8 @@ const Subjects = () => {
     },
     {
       id: 5,
-      title: "Mathematis",
-      description: "Build and program your own robots that can move and think",
+      title: "Mathematics",
+      description: "Explore the patterns, shapes, and equations that shape the universe",
       icon: "👨🏻‍🏫",
       color: "from-red-400 to-red-600",
       borderColor: "border-red-300",
