@@ -58,35 +58,35 @@ const Auditory: React.FC = () => {
     const questions: Question[] = [
         {
             id: 1,
-            text: "What does a battery do in an electric circuit?",
+            text: "Listen carefully and choose the correct answer",
             correctAnswer: "It provides electrical energy",
             audioText: "What does a battery do in an electric circuit?",
             options: ["It stops the current", " It lights up the bulb", "It provides electrical energy", "It cools the circuit"]
         },
         {
             id: 2,
-            text: "Which material is a good conductor of electricity?",
+            text: "Listen carefully and choose the correct answer",
             correctAnswer: "Copper",
             audioText: "Which material is a good conductor of electricity?",
             options: ["Plastic", "Wood", "Rubber", "Copper"]
         },
         {
             id: 3,
-            text: "What unit is used to measure electric current?",
+            text: "Listen carefully and choose the correct answer",
             correctAnswer: "Ampere",
             audioText: "What unit is used to measure electric current?",
             options: ["Volt", "Ampere", "Watt", "Ohm"]
         },
         {
             id: 4,
-            text: "Which of the following is an example of an insulator?",
+            text: "Listen carefully and choose the correct answer",
             correctAnswer: "Glass",
             audioText: "Which of the following is an example of an insulator?",
             options: ["Iron", "Silver", "Glass", "Aluminum"]
         },
         {
             id: 5,
-            text: "What is the function of a switch in a circuit?",
+            text: "Listen carefully and choose the correct answer",
             correctAnswer: "To stop or allow current flow",
             audioText: "What is the function of a switch in a circuit?",
             options: ["To increase voltage", "To stop or allow current flow", "To store energy", "To measure resistance"]
