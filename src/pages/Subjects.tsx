@@ -35,7 +35,7 @@ const Subjects = () => {
   const subjects = [
     {
       id: 1,
-      title: "Basic Electronics",
+      title: "Engineering",
       description: "Start your journey with fundamental concepts of electricity and circuits",
       icon: "⚡",
       color: "from-blue-400 to-blue-600",
@@ -46,7 +46,7 @@ const Subjects = () => {
     },
     {
       id: 2,
-      title: "Circuit Building",
+      title: "Science",
       description: "Learn to design and build amazing electronic circuits",
       icon: "🔧",
       color: "from-green-400 to-green-600",
@@ -57,7 +57,7 @@ const Subjects = () => {
     },
     {
       id: 3,
-      title: "Motors & Movement",
+      title: "Technology",
       description: "Explore how electricity creates motion and builds motors",
       icon: "🔄",
       color: "from-purple-400 to-purple-600",
@@ -68,7 +68,7 @@ const Subjects = () => {
     },
     {
       id: 4,
-      title: "Automation & Control",
+      title: "Arts",
       description: "Discover how to make machines think and work automatically",
       icon: "🤖",
       color: "from-orange-400 to-orange-600",
@@ -79,7 +79,7 @@ const Subjects = () => {
     },
     {
       id: 5,
-      title: "Robotics",
+      title: "Mathematics",
       description: "Build and program your own robots that can move and think",
       icon: "🦾",
       color: "from-red-400 to-red-600",
