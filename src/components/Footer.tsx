@@ -69,7 +69,7 @@ const Footer = () => {
         <div className="border-t border-blue-400 mt-8 pt-8 text-center">
           <p className="text-blue-100">
             © 2025 TinkerAlpha Learning Academy. All rights reserved. 
-            Made with ❤️ for young innovators!
+            Made by Group 17 🤍
           </p>
         </div>
       </div>

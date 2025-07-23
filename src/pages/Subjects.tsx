@@ -252,7 +252,7 @@ const Subjects = () => {
             <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4 text-yellow-300">Contact</h4>
               <p className="text-purple-200 mb-2">📧 hello@tinkeralpha.com</p>
-              <p className="text-purple-200 mb-2">📞 +94712345677</p>
+              <p className="text-purple-200 mb-2">📞 +94718771343</p>
               <p className="text-purple-200">🌍 Sri Lanka</p>
             </div>
           </div>
